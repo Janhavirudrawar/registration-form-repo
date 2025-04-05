@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+        }
+        p{
+            color: red;
+        }
+        body {
+            background-color: antiquewhite;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        .box {
+            border-width: 2px;
+            border-color: black;
+        }
+
+        .form-container {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"],
+        textarea[type="comment"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+        }
+       
+        body {
+
+
+            place-items: center;
+            /* centers horizontally & vertically */
+        }
+
+        .bigbox {
+            width: 400px;
+            height: 1300px;
+            border: 3px solid #333;
+            padding: 10px;
+            display: flex;
+            /* or grid or block depending on layout */
+            flex-wrap: wrap;
+            /* wraps boxes to the next line if needed */
+            gap: 10px;
+            /* space between small boxes */
+            background-color: #f0f0f0;
+
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        button[type="submit"] {
+            background-color: rgb(85, 83, 83);
+            /* Slightly darker green on hover */
+        }
+        label.required::after {
+  content: " *";
+  color: red;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Regestration Form</h1>
+
+    <form action="post"  onsubmit="showSuccess(event)">
+        <div class="bigbox">
+            <div class="form-container">
+                <label for="userid" class="required">User ID:</label>
+                <input type="text" name="userid" id="userid" placeholder="Enter your user ID" class="box" required>
+            </div>
+            <br>
+            <div class="form-container">
+                <label for="password" class="required">Password:</label>
+                <input type="text" name="password" id="password" placeholder="Enter your password" class="box" 
+                    minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Password must be 8-20 characters and include at least one uppercase letter, one lowercase letter, and  one number"
+                    required>
+            </div>
+            <br>
+            <div class="form-container">
+                <label for="name" class="required">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" class="box" required>
+            </div>
+            <br>
+            <div class="form-container">
+                <label for="address">Address:</label>
+                <input type="text" name="address" id="address" placeholder="Enter your address" class="box">
+            </div>
+            <br>
+            <div class="form-container">
+                <label for="country" class="required">Country:</label>
+                <select name="country" id="country" required>
+                    <option value="nothing">(Please select a country)</option>
+                    <option value="India">India</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Nepal">Nepal</option>
+                </select>
+            </div>
+
+
+
+            <br>
+            <div class="form-container">
+                <label for="zip code" class="required">ZIP code:</label>
+                <input type="text" name="zip code" id="zip code" placeholder="Enter your ZIP code" class="box" required
+                title="please enter a numeric value"
+                pattern="\d*" inputmode="numeric" 
+          >
+            </div>
+            <br>
+            <div class="form-container">
+                <label for="email" class="required">Email:</label>
+                <input type="text" name="email" id="email" placeholder="Enter your Email" class="box" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Please enter a valid email address like user@example.com">
+            </div>
+            <br>
+            <div class="form-container">
+                <label for="gender" class="required">Select your gender:</label required>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male"> Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female"> Female</label>
+            </div>
+            <br>
+            <div class="form-container">
+
+                <label for="language" class="required">Language:</label required>
+                <input type="checkbox" name="language" id="english" value="english">
+                <label for="english">English</label>
+                <input type="checkbox" name="language" id="non english" value="non english">
+                <label for="english">Non English</label>
+
+            </div class="form-container">
+
+            <br>
+
+            <div class="form-container">
+                <label for="comment">Enter about yourself:</label>
+                <br>
+                <textarea name="comment" id="comment" rows="5" cols="50" type="comment"></textarea>
+            </div>
+            <br>
+            <div class=>
+                <button type="submit">REGISTER</button>
+            </div>
+           
+              
+             
+              <div id="success" class="success-message" style="display: none;">
+                ✅ Registered Successfully!
+              </div>
+              
+        </div>
+    </form>
+    <script>
+        function showSuccess(event) {
+  event.preventDefault(); // Prevent form from actually submitting
+  document.getElementById("success").style.display = "block";
+}
+
+    </script>
+</body>
+
+</html>
